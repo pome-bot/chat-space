@@ -23,7 +23,7 @@ Things you may want to cover:
 
 * ...
 
-# Designing Datebase
+# Designing Database
 
 ## users table
 |Column|Type|Options|
