@@ -1,0 +1,38 @@
+* {
+  box-sizing: border-box;
+}
+
+.wrapper{
+  display: flex;
+}
+
+.side-bar{
+  height: 100vh;
+  background-color: #253141;
+  width: 300px;
+  &__user-name{
+    height: 100px;
+  }
+  &__group-list{
+    height: calc(100vh - 100px);
+    background-color: #2f3e51;;
+  }
+}
+
+.chat-main {
+  height: 100vh;
+  background-color: #ffffff;
+  width: calc(100vw - 300px);
+  &__group-info {
+    height: 100px;
+    border-bottom: 1px solid #eeeeee;;
+  }
+  &__message-list{
+    height: calc(100vh - 190px);
+    background-color: #fafafa;
+  }
+  &__message-form{
+    height: 90px;
+    background-color: #d2d2d2;
+  }
+}
