@@ -154,3 +154,46 @@
     }
   }
 }
+
+// 23
+.form{
+  height: 90px;
+  width: calc(100vw - 300px);
+  padding: 0 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  &__contents{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    &__text{
+      background-color: #ffffff;
+      height: 50px;
+      width: 100%;
+      padding-left: 10px;
+      border: none;
+    }
+    &__label{
+      position: absolute;
+      right: 10px;
+      &--icon{
+        font-size: 25px;
+      }
+      &--file-field{
+        display: none;
+      }
+    }
+  }
+  &__submit{
+    height: 50px;
+    background-color: #38aef0;
+    padding: 0 30px;
+    margin-left: 15px;
+    color: #ffffff;
+    font-size: 16px;
+    border: none;
+  }
+}

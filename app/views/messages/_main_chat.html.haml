@@ -37,7 +37,11 @@
           %span<>
             text2
   .chat-main__message-form
-
-
-
-
+    = form_with url: "#" do |f|
+      .form
+        .form__contents
+          = f.text_field :text, placeholder: "type a message", class: "form__contents__text"
+          %label{class: "form__contents__label"}
+            = icon('fas', 'image', class: "form__contents__label--icon")
+            = f.file_field :image, { class: "form__contents__label--file-field"}
+        = f.submit "Send", { class: "form__submit"}
