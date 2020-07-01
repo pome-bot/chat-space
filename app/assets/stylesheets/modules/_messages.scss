@@ -6,6 +6,7 @@
   display: flex;
 }
 
+// 10
 .side-bar{
   height: 100vh;
   background-color: #253141;
@@ -18,10 +19,12 @@
   }
   &__group-list{
     height: calc(100vh - 100px);
-    background-color: #2f3e51;;
+    background-color: #2f3e51;
+    padding: 0 20px;
   }
 }
 
+// 11
 .top-items{
   height: 20px;
   width: 260px;
@@ -52,6 +55,21 @@
   }
 }
 
+// 12
+.group{
+  padding-top: 20px;
+  padding-bottom: 40px;
+  color: white;
+  &__name{
+    font-size: 15px;
+  }
+  &__message{
+    font-size: 11px;
+    margin-top: 5px;
+  }
+}
+
+// 20
 .chat-main {
   height: 100vh;
   background-color: #ffffff;
