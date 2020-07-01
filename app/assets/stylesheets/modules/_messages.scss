@@ -87,3 +87,41 @@
     background-color: #d2d2d2;
   }
 }
+
+// 21
+.group-info{
+  height: 100px;
+  width: calc(100vw - 300px);
+  padding: 0 40px;
+  display: flex;
+  justify-content: space-between;
+  &__name-member{
+    height: 100px;
+    padding-top: 35px;
+    &__name{
+      color: #333333;
+      font-size: 20px;
+    }
+    &__member{
+      color: #999999;
+      font-size: 12px;
+      margin-top: 15px;
+    }
+  }
+  &__edit{
+    height: 100px;
+    width: 72px;
+    padding-top: 28px;
+    &__btn{
+      text-decoration: none;
+      display: block;
+      color: #38aef0;
+      font-size: 16px;
+      height: 40px;
+      border: 1px solid #38aef0;
+      padding: 0 20px;
+      display: flex;
+      align-items: center;
+    }
+  }
+}

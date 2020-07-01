@@ -1,5 +1,17 @@
 .chat-main
   .chat-main__group-info
+    .group-info
+      .group-info__name-member
+        .group-info__name-member__name
+          %span<>
+            group_name
+        .group-info__name-member__member
+          %span<>
+            Member：group_member
+      .group-info__edit
+        = link_to "#", class: "group-info__edit__btn" do
+          %span<>
+            Edit
   .chat-main__message-list
   .chat-main__message-form
 
