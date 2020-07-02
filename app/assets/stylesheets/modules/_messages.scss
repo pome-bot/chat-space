@@ -140,6 +140,7 @@
   padding-top: 35px;
   overflow: scroll;
   &__message{
+    margin-bottom: 46px;
     &__name-date{
       display: flex;
       justify-content: flex-start;
@@ -157,7 +158,9 @@
       color: #434A54;
       font-size: 14px;
       margin-top: 12px;
-      margin-bottom: 46px;
+    }
+    &__image{
+      height: 300px;
     }
   }
 }
