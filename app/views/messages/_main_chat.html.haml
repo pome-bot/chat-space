@@ -14,30 +14,20 @@
             Edit
   .chat-main__message-list
     .message-box
-      .message-box__message
-        .message-box__message__name-date
-          .message-box__message__name-date__name
+      - @messages.each do |message|
+        .message-box__message
+          .message-box__message__name-date
+            .message-box__message__name-date__name
+              %span<>
+                = message.user.name
+            .message-box__message__name-date__date
+              %span<>
+                = message.created_at
+          .message-box__message__text
             %span<>
-              name1
-          .message-box__message__name-date__date
-            %span<>
-              date1
-        .message-box__message__text
-          %span<>
-            text1
-      .message-box__message
-        .message-box__message__name-date
-          .message-box__message__name-date__name
-            %span<>
-              name2
-          .message-box__message__name-date__date
-            %span<>
-              date2
-        .message-box__message__text
-          %span<>
-            text2
+              = message.text
   .chat-main__message-form
-    = form_with url: "#" do |f|
+    = form_with model: [@group, @message], local: true do |f|
       .form
         .form__contents
           = f.text_field :text, placeholder: "type a message", class: "form__contents__text"

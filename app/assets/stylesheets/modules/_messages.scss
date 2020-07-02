@@ -138,6 +138,7 @@
   width: calc(100vw - 300px);
   padding-left: 40px;
   padding-top: 35px;
+  overflow: scroll;
   &__message{
     &__name-date{
       display: flex;
