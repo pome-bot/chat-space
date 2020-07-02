@@ -4,40 +4,35 @@
       .group-info__name-member
         .group-info__name-member__name
           %span<>
-            group_name
+            = @group.name
         .group-info__name-member__member
           %span<>
-            Member：group_member1 group_member2
+            Member：
+          %ul.group-info__name-member__member--ul
+            - @group.users.each do |user|
+              %li.group-info__name-member__member--ul--list=user.name
       .group-info__edit
-        = link_to "#", class: "group-info__edit__btn" do
+        = link_to edit_group_path(@group), class: "group-info__edit__btn" do
           %span<>
             Edit
   .chat-main__message-list
     .message-box
-      .message-box__message
-        .message-box__message__name-date
-          .message-box__message__name-date__name
-            %span<>
-              name1
-          .message-box__message__name-date__date
-            %span<>
-              date1
-        .message-box__message__text
-          %span<>
-            text1
-      .message-box__message
-        .message-box__message__name-date
-          .message-box__message__name-date__name
-            %span<>
-              name2
-          .message-box__message__name-date__date
-            %span<>
-              date2
-        .message-box__message__text
-          %span<>
-            text2
+      - @messages.each do |message|
+        .message-box__message
+          .message-box__message__name-date
+            .message-box__message__name-date__name
+              %span<>
+                = message.user.name
+            .message-box__message__name-date__date
+              %span<>
+                = message.created_at.strftime("%Y年%m月%d日 %H時%M分")
+          - if message.text.present?
+            .message-box__message__text
+              %p<>
+                = message.text
+          = image_tag message.image.url, class: "message-box__message__image" if message.image.present?
   .chat-main__message-form
-    = form_with url: "#" do |f|
+    = form_with model: [@group, @message], local: true do |f|
       .form
         .form__contents
           = f.text_field :text, placeholder: "type a message", class: "form__contents__text"

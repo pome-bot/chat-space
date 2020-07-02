@@ -13,10 +13,10 @@
     -# - @groups.each do |group|
     - current_user.groups.each do |group|
       .group
-        = link_to "#", class: "group-a-tag" do
+        = link_to group_messages_path(group), class: "group-a-tag" do
           .group__name
             %span<>
               = group.name
           .group__message
             %span<>
-              メッセージはまだありません
+              = group.show_last_message
