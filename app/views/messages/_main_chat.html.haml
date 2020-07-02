@@ -4,12 +4,15 @@
       .group-info__name-member
         .group-info__name-member__name
           %span<>
-            group_name
+            = @group.name
         .group-info__name-member__member
           %span<>
-            Member：group_member1 group_member2
+            Member：
+          %ul.group-info__name-member__member--ul
+            - @group.users.each do |user|
+              %li.group-info__name-member__member--ul--list=user.name
       .group-info__edit
-        = link_to "#", class: "group-info__edit__btn" do
+        = link_to edit_group_path(@group), class: "group-info__edit__btn" do
           %span<>
             Edit
   .chat-main__message-list
