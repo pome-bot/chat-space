@@ -31,6 +31,10 @@ gem 'bootsnap', '>= 1.4.2', require: false
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'rspec-rails', '~> 4.0.0.beta2' # add for test
+  gem 'factory_bot_rails'             # add for test
+  gem 'rails-controller-testing'      # add for test
+  gem 'faker', "~> 2.8"               # add for test
 end
 
 group :development do
@@ -61,5 +65,5 @@ gem 'devise'
 
 gem 'pry-rails'
 
-gem 'carrierwave'
-gem 'mini_magick'
+gem 'carrierwave' # add for image
+gem 'mini_magick' # add for image
