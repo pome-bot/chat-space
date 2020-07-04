@@ -5,8 +5,8 @@ FactoryBot.define do
     user
     group
 
-    created_at { Faker::Time.between(from: DateTime.now - 2, to: DateTime.now) }
-    updated_at { Faker::Time.between(from: DateTime.now - 2, to: DateTime.now) }
+    # created_at { Faker::Time.between(from: DateTime.now - 2, to: DateTime.now) }
+    # updated_at { Faker::Time.between(from: DateTime.now - 2, to: DateTime.now) }
     # group_id { Faker::Number.between(from: 1, to: 3) }
   end
 end

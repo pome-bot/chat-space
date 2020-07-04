@@ -1,4 +1,5 @@
 require 'rails_helper'
+# bundle exec rspec spec/controllers/messages_controller_spec.rb
 
 describe MessagesController do
   let(:group) { create(:group) }
@@ -36,6 +37,7 @@ describe MessagesController do
     end
   end
 
+
   describe '#create' do
     let(:params) { { group_id: group.id, user_id: user.id, message: attributes_for(:message) } }
 
@@ -51,7 +53,13 @@ describe MessagesController do
         }
 
         it 'count up message' do
-          expect{ subject }.to change(Message, :count).by(1)
+          message = create(:message)
+          params_s = {group_id: group.id, user_id: user.id, 
+                      message: {text: message.text, image: message.image} }
+                      # message: {text: message[:text], image: message[:image]} }
+          # binding.pry
+          expect{ post :create, params: params_s }.to change(Message, :count).by(1)
+          # expect{ subject }.to change(Message, :count).by(1)
         end
 
         it 'redirects to group_messages_path' do
@@ -61,7 +69,8 @@ describe MessagesController do
       end
 
       context 'can not save' do
-        let(:invalid_params) { { group_id: group.id, user_id: user.id, message: attributes_for(:message, text: nil, image: nil) } }
+        let(:invalid_params) { { group_id: group.id, user_id: user.id, 
+                                 message: attributes_for(:message, text: nil, image: nil) } }
 
         subject {
           post :create,
@@ -69,7 +78,10 @@ describe MessagesController do
         }
 
         it 'does not count up' do
-          expect{ subject }.not_to change(Message, :count)
+          invalid_params_s = { group_id: group.id, user_id: user.id, 
+                               message: {text: nil, image: nil} }
+          expect{ post :create, params: invalid_params_s }.not_to change(Message, :count)
+          # expect{ subject }.not_to change(Message, :count)
         end
 
         it 'renders index' do

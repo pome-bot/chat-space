@@ -9,8 +9,11 @@ RSpec.describe Message, type: :model do
       end
 
       it 'is valid only with image' do
-        message = build(:message, text: nil)
-        expect(message).to be_valid
+        message_c = create(:message, text: nil)
+        message_b = build(:message, text: nil)
+        # binding.pry
+        expect(message_c).to be_valid
+        expect(message_b).to be_valid
       end
 
       it 'is valid with both text and image' do
