@@ -55,7 +55,7 @@ group :test do
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+# gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem "haml-rails", ">= 1.0", '<= 2.0.1'
 
@@ -67,3 +67,5 @@ gem 'pry-rails'
 
 gem 'carrierwave' # add for image
 gem 'mini_magick' # add for image
+
+gem 'jquery-rails'
