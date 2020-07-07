@@ -40,12 +40,11 @@ $(function(){
       let html = buildHTML(data);
       $('.message-box').append(html);
       $('.message-box').animate({ scrollTop: $('.message-box')[0].scrollHeight});
-      // $('.form__contents__text').val('');
-      $('form')[0].reset();
-      $('.form__submit').prop('disabled', false);
     })
     .fail(function(){
       alert('Sorry, posting your message failed.');
+    })
+    .always(function(){
       $('form')[0].reset();
       $('.form__submit').prop('disabled', false);
     })
