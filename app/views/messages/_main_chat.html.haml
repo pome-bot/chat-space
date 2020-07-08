@@ -9,7 +9,8 @@
           %span<>
             Member：
           %ul.group-info__name-member__member--ul
-            - @group.users.each do |user|
+            -# - @group.users.each do |user|
+            - @g_users.each do |user|
               %li.group-info__name-member__member--ul--list=user.name
       .group-info__edit
         = link_to edit_group_path(@group), class: "group-info__edit__btn" do
