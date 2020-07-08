@@ -46,35 +46,6 @@ $(function(){
     });
   };
 
-  // ajax -- add message
-  $('#form-message').on('submit', function(e){
-    e.preventDefault();
-
-    let formData = new FormData(this);
-    let url = $(this).attr('action')
-    $.ajax({
-      url: url,
-      type: "POST",
-      data: formData,
-      dataType: 'json',
-      processData: false, // FormData
-      contentType: false  // FormData
-    })
-
-    .done(function(data){
-      let html = buildHTML(data);
-      $('.message-box').append(html);
-      $('.message-box').animate({ scrollTop: $('.message-box')[0].scrollHeight});
-    })
-    .fail(function(){
-      alert('Sorry, posting your message failed.');
-    })
-    .always(function(){
-      $('form')[0].reset();
-      $('.form__submit').prop('disabled', false);
-    })
-  })
-
   // relaod
   setInterval(reloadMessages, 7000);
 
