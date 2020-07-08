@@ -19,7 +19,7 @@
   .chat-main__message-list
     .message-box
       - @messages.each do |message|
-        .message-box__message
+        .message-box__message{data: {message: {id: message.id}}}
           .message-box__message__name-date
             .message-box__message__name-date__name
               %span<>
