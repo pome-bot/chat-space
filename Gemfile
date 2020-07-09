@@ -78,3 +78,5 @@ gem 'carrierwave' # add for image
 gem 'mini_magick' # add for image
 
 gem 'jquery-rails'
+
+gem 'fog-aws'
