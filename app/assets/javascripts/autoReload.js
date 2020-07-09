@@ -25,6 +25,7 @@ $(function(){
 
   let reloadMessages = function() {
     let last_message_id = $('.message-box__message:last').data("message-id");
+    if ( !(last_message_id) ) { last_message_id = 0 }
     $.ajax({
       url: "api/messages",
       type: 'get',
