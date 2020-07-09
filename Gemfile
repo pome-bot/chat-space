@@ -35,6 +35,11 @@ group :development, :test do
   gem 'factory_bot_rails'             # add for test
   gem 'rails-controller-testing'      # add for test
   gem 'faker', "~> 2.8"               # add for test
+  gem 'capistrano'          # add for deploy
+  gem 'capistrano-rbenv'    # add for deploy
+  gem 'capistrano-bundler'  # add for deploy
+  gem 'capistrano-rails'    # add for deploy
+  gem 'capistrano3-unicorn' # add for deploy
 end
 
 group :development do
