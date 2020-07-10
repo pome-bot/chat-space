@@ -103,16 +103,25 @@
   justify-content: space-between;
   &__name-member{
     height: 100px;
+    width: calc(100% - 100px);
     padding-top: 35px;
     &__name{
+      width: 100%;
       color: #333333;
       font-size: 20px;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
     }
     &__member{
+      width: 100%;
       color: #999999;
       font-size: 12px;
       margin-top: 15px;
       display: flex;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
       &--ul{
         display: flex;
         &--list{
@@ -125,6 +134,7 @@
     height: 100px;
     width: 72px;
     padding-top: 28px;
+    margin-left: 15px;
     &__btn{
       text-decoration: none;
       display: block;
