@@ -15,3 +15,9 @@
     width: 100vw;
   }
 }
+
+.is-hidden {  
+  transition: opacity 3s, visibility 3s;
+  opacity: 0;
+  visibility: hidden;
+}
