@@ -2,7 +2,11 @@ class UsersController < ApplicationController
 
   def index
     return nil if params[:keyword] == ""
-    @users = User.where(['name LIKE ?', "%#{params[:keyword]}%"] ).where.not(id: current_user.id).limit(10)
+    group = Group.find(params[:group_id])
+    usersA = User.where(['name LIKE ?', "%#{params[:keyword]}%"]).where.not(id: current_user.id).limit(10)
+    usersB = group.users
+    @users = usersA - usersB
+
     respond_to do |format|
       format.html
       format.json

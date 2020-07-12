@@ -29,11 +29,13 @@ $(function() {
   // keyup event
   $("#UserSearch__field").on("keyup", function() {
     let input = $(this).val();
+    let url_group_id = $("form").attr('action')  // "/groups/group_id"
+    let group_id = url_group_id.substr(8)
 
     $.ajax({
       type: 'GET',
       url: '/users',
-      data: { keyword: input },
+      data: { keyword: input, group_id: group_id },
       dataType: 'json'
     })
 
