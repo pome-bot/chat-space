@@ -21,7 +21,7 @@ $(function() {
     let html = `<div class="ChatMember">
                   <p class="ChatMember__name">${name}</p>
                   <input name="group[user_ids][]" type="hidden" value="${id}" />
-                  <div class="ChatMember__remove ChatMember__button">削除</div>
+                  <div class="ChatMember__remove ChatMember__button" data-user-id="${id}" data-user-name="${name}">削除</div>
                 </div>`;
     $(".ChatMembers").append(html);
   }
@@ -29,13 +29,17 @@ $(function() {
   // keyup event
   $("#UserSearch__field").on("keyup", function() {
     let input = $(this).val();
-    let url_group_id = $("form").attr('action')  // "/groups/group_id"
-    let group_id = url_group_id.substr(8)
+    let url_group_id = $("form").attr('action');  // "/groups/group_id"
+    let group_id = url_group_id.substr(8);
+
+    var group_user_ids = $(".ChatMember__remove").map(function(){
+      return $(this).data('user-id');
+    }).toArray();
 
     $.ajax({
       type: 'GET',
       url: '/users',
-      data: { keyword: input, group_id: group_id },
+      data: { keyword: input, group_id: group_id, user_ids: group_user_ids },
       dataType: 'json'
     })
 
@@ -68,6 +72,43 @@ $(function() {
   // click event -- remove
   $(".ChatMembers").on("click", ".ChatMember__remove.ChatMember__button", function() {
     $(this).parent().remove();
+
+    let input = $("#UserSearch__field").val();
+    let url_group_id = $("form").attr('action');  // "/groups/group_id"
+    let group_id = url_group_id.substr(8);
+
+    // let group_user_ids = [];
+    // for(let i=0; i < ChatMember__removes.length; i++){
+    //   group_user_ids.push(ChatMember__removes[i].getAttribute('data-user-id'));
+    // }
+
+    var group_user_ids = $(".ChatMember__remove").map(function(){
+      return $(this).data('user-id');
+    }).toArray();
+
+    $.ajax({
+      type: 'GET',
+      url: '/users',
+      data: { keyword: input, group_id: group_id, user_ids: group_user_ids },
+      dataType: 'json'
+    })
+
+    .done(function(users) {
+      userSearchResult.empty();
+      if (users.length !== 0) {
+        users.forEach(function(user){
+          appendUser(user);
+        });
+      } else if (input.length == 0) {
+        return false;
+      } else {
+        appendErrMsgToHTML("一致するユーザーはいません");
+      }
+    })
+    .fail(function() {
+      alert('error: failed searching user.');
+    });
+
   });
 
 });
